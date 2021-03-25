@@ -21,10 +21,18 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-          <%# <% if logged_in?  %>
+          <% if !current_user  %>
             <li><%= link_to "Sign in", '/signin' %> </li>
-            <li><%= link_to "Sign Up", '/' %></li>
-          <%# <%end %> 
+            <li><%= link_to "Sign Up", '/signup' %></li>
+          <%else%>
+            <% if current_user.admin %>
+              <li> <%= link_to "See attractions", attractions_path %></li>
+            <% else %>
+              <li><%= link_to "See attractions", attractions_path %>
+            <% end %>
+            <li><%= link_to "User Profile", user_path(current_user) %>
+            <li><%= link_to "Log Out", '/session', method: 'delete' %>
+          <% end %> 
           </ul>
         </div><!--/.nav-collapse -->
       </div>
