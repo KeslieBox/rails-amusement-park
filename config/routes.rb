@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/session', to: 'session#create', as: 'session'
   delete '/session', to: 'session#destroy'
   resources :users
+  post '/users/:id', to: 'users#update'
   resources :attractions
   post '/rides', to: 'rides#create', as: 'rides'
 

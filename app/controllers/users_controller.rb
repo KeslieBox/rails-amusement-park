@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     def create
         if user = User.create(user_params)
             if params[:user][:admin] == "1"
-
                 user.admin = true
                 user.save
             end
@@ -22,6 +21,12 @@ class UsersController < ApplicationController
         if !session[:user_id]
             redirect_to root_path
         end
+    end
+
+    def edit
+    end
+
+    def update
     end
 
     private
